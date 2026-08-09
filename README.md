@@ -10,7 +10,9 @@
   <img alt="Notebook" src="https://img.shields.io/badge/Jupyter-Notebook-F37626">
   <img alt="Status" src="https://img.shields.io/badge/status-research%20software-2E8B57">
 </p>
+
 ---
+
 <p align="center">
   <img src="FoldColabFlow_Workflow.png" alt="FoldColabFlow workflow diagram" width="95%">
 </p>

@@ -1,0 +1,16 @@
+FoldColabFlow
+Copyright 2026 FoldColabFlow contributors
+
+FoldColabFlow original code and documentation are licensed under the
+Apache License, Version 2.0. See the LICENSE file.
+
+SCHOLARLY CITATION
+If you use FoldColabFlow in scholarly work, citation of the software release
+is strongly requested. Citation metadata are provided in CITATION.cff.
+This citation request is informational and does not add conditions to or
+modify the Apache License, Version 2.0.
+
+THIRD-PARTY MATERIALS
+FoldColabFlow invokes, downloads, or interoperates with third-party software,
+models, services, databases, and data. Those materials are not relicensed by
+FoldColabFlow and remain subject to their own upstream terms and licenses.

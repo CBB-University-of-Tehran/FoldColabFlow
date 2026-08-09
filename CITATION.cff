@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use FoldColabFlow in scholarly work, please cite the software using this metadata. The associated article citation will be added once it becomes available."
+title: "FoldColabFlow"
+type: software
+authors:
+  - name: "FoldColabFlow contributors"
+license: Apache-2.0
+abstract: >-
+  FoldColabFlow is an integrated Google Colab workflow for protein sequence
+  quality control, comparative sequence analysis, physicochemical profiling,
+  ColabFold-based structure prediction, structure validation, functional
+  annotation, structural comparison, visualization, and reproducible export.
+keywords:
+  - bioinformatics
+  - protein sequence analysis
+  - protein structure prediction
+  - ColabFold
+  - AlphaFold
+  - multiple sequence alignment
+  - physicochemical descriptors
+  - Google Colab

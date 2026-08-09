@@ -1,0 +1,20 @@
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# ColabFold/runtime setup markers
+COLABFOLD_READY
+CONDA_READY
+HH_READY
+AMBER_READY
+
+# Typical local/runtime outputs
+results/
+runtime_outputs/
+*_results/
+*.tar.gz
+
+# Keep curated demonstration archives under examples/demo/
+!examples/demo/*_results.zip

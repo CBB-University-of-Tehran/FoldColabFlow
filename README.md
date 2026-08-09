@@ -11,6 +11,14 @@
   <img alt="Status" src="https://img.shields.io/badge/status-research%20software-2E8B57">
 </p>
 
+<p align="center">
+  <img src="FoldColabFlow_Workflow.png" alt="FoldColabFlow workflow diagram" width="95%">
+</p>
+
+<p align="center">
+  <em>FoldColabFlow: integrated sequence-to-structure protein analysis workflow.</em>
+</p>
+
 > **Research software status.** FoldColabFlow is being prepared as a citable research software resource. The accompanying manuscript has not yet been accepted; the formal article citation will be added when it becomes available.
 
 ## Overview
@@ -24,11 +32,8 @@ The current demonstration package was run on two human protein sequences supplie
 
 The repository includes representative alignment, physicochemical, structure-prediction, and Ramachandran outputs from this two-protein demonstration.
 
-## Workflow
 
-<p align="center">
-  <img src="assets/foldcolabflow_workflow.png" alt="FoldColabFlow workflow diagram" width="95%">
-</p>
+## Workflow
 
 FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequence Analysis**, **Structure Analysis**, and **Reporting**.
 
@@ -95,7 +100,7 @@ FoldColabFlow is designed primarily for **Google Colab**, where the notebook can
 
 ### Run the notebook
 
-1. Open `notebooks/FoldColabFlow.ipynb` in Google Colab.
+1. Open `FoldColabFlow.ipynb` in Google Colab.
 2. Run the cells from top to bottom.
 3. Mount Google Drive if persistent storage is desired.
 4. Enter protein sequences in the **Protein Sequence Input** section.
@@ -150,24 +155,19 @@ The ColabFold result folders also include upstream-generated `cite.bibtex` files
 
 ## Repository layout
 
+For the initial GitHub setup, the core public-facing files can be kept at the repository root so they are easy to upload from the web interface:
+
 ```text
 FoldColabFlow/
 ├── README.md
 ├── LICENSE
 ├── NOTICE
 ├── CITATION.cff
-├── assets/
-│   └── foldcolabflow_workflow.png
-├── notebooks/
-│   └── FoldColabFlow.ipynb
-└── examples/
-    └── demo/
-        ├── README.md
-        ├── alignment_outputs.zip
-        ├── physicochemical_outputs.zip
-        ├── Example_c1402_results.zip
-        └── Seq_1_ramachandran.png
+├── FoldColabFlow_Workflow.png
+└── FoldColabFlow.ipynb
 ```
+
+Representative demo outputs can then be added under `examples/demo/` once the repository is synchronized with GitHub Desktop or Git. Keeping large generated outputs separate from the core notebook and documentation makes the repository easier to navigate.
 
 ## Outputs
 

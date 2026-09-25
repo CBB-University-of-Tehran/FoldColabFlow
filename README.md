@@ -34,6 +34,8 @@ The current demonstration package was run on two human protein sequences supplie
 
 The repository includes representative alignment, physicochemical, structure-prediction, and Ramachandran outputs from this two-protein demonstration.
 
+The demonstration dataset is intentionally kept separate from the PETase-like esterase case study described in the accompanying manuscript. Manuscript-specific sequence and structure files are stored under `manuscript_case_study/` so that the published analyses can be reproduced without mixing them with the general software demo.
+
 
 ## Workflow
 
@@ -155,9 +157,34 @@ The supplied ColabFold configuration files record:
 
 The ColabFold result folders also include upstream-generated `cite.bibtex` files; retain these and cite the relevant upstream methods when publishing results.
 
+## Manuscript case-study data
+
+The PETase-like esterase analyses reported in the accompanying manuscript are maintained separately from the two-protein demonstration dataset.
+
+The six amino-acid sequences used in the manuscript case study (`Seq_1`–`Seq_6`) are provided in:
+
+`manuscript_case_study/PETase_like_esterase_candidates.fasta`
+
+This separation is intentional: `examples/demo/` contains the general FoldColabFlow demonstration, whereas `manuscript_case_study/` contains the exact biological inputs and derived structural files associated with the manuscript.
+
+Predicted structures corresponding to the manuscript case study can be added under:
+
+`manuscript_case_study/`
+
+Recommended filenames are:
+
+- `Seq_1.pdb`
+- `Seq_2.pdb`
+- `Seq_3.pdb`
+- `Seq_4.pdb`
+- `Seq_5.pdb`
+- `Seq_6.pdb`
+
+Additional manuscript-specific files, including predicted structures and other analysis outputs, can be uploaded directly into `manuscript_case_study/`. This keeps all files associated with the article case study in a single, easy-to-access location.
+
 ## Repository layout
 
-For the initial GitHub setup, the core public-facing files can be kept at the repository root so they are easy to upload from the web interface:
+A recommended repository organization is:
 
 ```text
 FoldColabFlow/
@@ -166,10 +193,23 @@ FoldColabFlow/
 ├── NOTICE
 ├── CITATION.cff
 ├── FoldColabFlow_Workflow.png
-└── FoldColabFlow.ipynb
+├── FoldColabFlow.ipynb
+│
+├── examples/
+│   └── demo/
+│       └── ... general two-protein demonstration files
+│
+└── manuscript_case_study/
+    ├── PETase_like_esterase_candidates.fasta
+    ├── Seq_1.pdb
+    ├── Seq_2.pdb
+    ├── Seq_3.pdb
+    ├── Seq_4.pdb
+    ├── Seq_5.pdb
+    └── Seq_6.pdb
 ```
 
-Representative demo outputs can then be added under `examples/demo/` once the repository is synchronized with GitHub Desktop or Git. Keeping large generated outputs separate from the core notebook and documentation makes the repository easier to navigate.
+The `examples/demo/` directory should remain dedicated to the general software demonstration. Manuscript-specific files should be placed directly under `manuscript_case_study/`, allowing readers to distinguish the software demo from the exact dataset used in the publication without introducing unnecessary nested folders.
 
 ## Outputs
 
@@ -181,6 +221,7 @@ Depending on the enabled modules, FoldColabFlow can generate:
 - **Validation and annotation:** PNG, TSV, CSV, TXT
 - **Structural comparison:** tabular TM-score/RMSD results
 - **Integrated reporting:** HTML reports and structured archives
+- **Manuscript case study:** FASTA inputs, predicted PDB structures, and associated reproducibility outputs stored separately under `manuscript_case_study/`
 
 ## Scientific scope and limitations
 

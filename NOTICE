@@ -1,16 +1,98 @@
-FoldColabFlow
+FoldColabFlow  
 Copyright 2026 FoldColabFlow contributors
 
 FoldColabFlow original code and documentation are licensed under the
-Apache License, Version 2.0. See the LICENSE file.
+Apache License, Version 2.0. See the LICENSE file included with this
+repository.
 
 SCHOLARLY CITATION
+
 If you use FoldColabFlow in scholarly work, citation of the software release
 is strongly requested. Citation metadata are provided in CITATION.cff.
+
 This citation request is informational and does not add conditions to or
 modify the Apache License, Version 2.0.
 
 THIRD-PARTY MATERIALS
-FoldColabFlow invokes, downloads, or interoperates with third-party software,
-models, services, databases, and data. Those materials are not relicensed by
-FoldColabFlow and remain subject to their own upstream terms and licenses.
+
+FoldColabFlow uses, invokes, downloads, interoperates with, and in some cases
+adapts portions of third-party software, models, services, databases, source
+code, and data.
+
+Unless explicitly stated otherwise, such third-party materials are not
+relicensed under the FoldColabFlow Apache License, Version 2.0. They remain
+subject to their respective upstream licenses, terms of use, copyright
+notices, and citation requirements.
+
+Users and redistributors of FoldColabFlow are responsible for complying with
+the applicable terms of those third-party components.
+
+COLABFOLD ATTRIBUTION
+
+Portions of FoldColabFlow contain code adapted from or based on code from the
+ColabFold project:
+
+ColabFold
+https://github.com/sokrypton/ColabFold
+
+The original ColabFold code is licensed under the MIT License.
+
+Copyright (c) 2021 Sergey Ovchinnikov
+
+The original ColabFold copyright notice and license terms remain applicable
+to the portions derived from or adapted from ColabFold.
+
+Modifications, integration, workflow organization, additional analyses,
+reporting functionality, and other original FoldColabFlow contributions are
+separate contributions and are licensed under the FoldColabFlow Apache
+License, Version 2.0, except where third-party license terms otherwise apply.
+
+The MIT License applicable to the ColabFold-derived portions is reproduced
+below.
+
+MIT License
+
+Copyright (c) 2021 Sergey Ovchinnikov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+OTHER THIRD-PARTY SOFTWARE AND RESOURCES
+
+FoldColabFlow also relies on additional third-party software, libraries,
+scientific tools, models, databases, services, and resources. These may
+include, depending on the enabled workflow modules, ColabFold/AlphaFold,
+Biopython, MAFFT, TM-align, PSALM, py3Dmol, Plotly, pandas, matplotlib,
+ramachandraw, MMseqs2-related services or resources, and other dependencies.
+
+Each third-party component remains subject to its own license, copyright,
+terms of use, and citation requirements.
+
+Scientific users should cite the relevant upstream software, methods, models,
+databases, and resources according to the citation guidance provided by their
+respective authors or maintainers.
+
+NO RELICENSING OF THIRD-PARTY MATERIALS
+
+Inclusion, invocation, modification, or interoperability of third-party
+materials within FoldColabFlow does not imply that those materials are
+licensed under the FoldColabFlow Apache License, Version 2.0.
+
+Only original FoldColabFlow code and documentation for which the
+FoldColabFlow contributors hold the applicable rights are distributed under
+the Apache License, Version 2.0, unless otherwise indicated.

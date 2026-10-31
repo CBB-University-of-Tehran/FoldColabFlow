@@ -1,0 +1,18 @@
+# FoldColabFlow — direct Python dependencies extracted from FoldColabFlow(1).ipynb
+# The notebook automatically installs these during its execution.
+# This file is a documented dependency list, NOT a tested lockfile.
+# Running pip install -r requirements.txt before the notebook is optional and
+# may duplicate/alter installations performed by notebook cells.
+
+biopython
+pandas
+matplotlib
+plotly
+kaleido==0.2.1
+ramachandraw
+protein-sequence-annotation==2.1.12
+
+# ColabFold is installed separately from GitHub in notebook cells 7, 9 and 11:
+# pip install 'colabfold[alphafold-minus-jax] @ git+https://github.com/sokrypton/ColabFold'
+# It is not pinned to a commit in the supplied notebook. See INSTALLATION.md.
+# GPU-enabled JAX, Miniforge, MAFFT and TM-align require special handling.

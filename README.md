@@ -1,3 +1,4 @@
+
 # FoldColabFlow
 
 <p align="center">
@@ -34,8 +35,7 @@ The current demonstration package was run on two human protein sequences supplie
 
 The repository includes representative alignment, physicochemical, structure-prediction, and Ramachandran outputs from this two-protein demonstration.
 
-The demonstration dataset is intentionally kept separate from the PETase-like esterase case study described in the accompanying manuscript. Manuscript-specific sequence and structure files are stored under `manuscript_case_study/` so that the published analyses can be reproduced without mixing them with the general software demo.
-
+The demonstration dataset is intentionally kept separate from the PETase-like esterase case study described in the accompanying manuscript. Manuscript-specific sequence and structure files are stored under `manuscript_case_study/` to distinguish the biological case study from the general software demonstration.
 
 ## Workflow
 
@@ -43,23 +43,25 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 
 ## Workflow modules
 
-| Workflow module | Main purpose | Core packages / tools | API / database / resource | Support utilities / UI | Main outputs |
-|---|---|---|---|---|---|
-| **Input and sequence quality control** | Prepare manually entered protein sequences and flag problematic inputs before downstream analysis. | `pandas`, `re` | User-provided protein sequences | `pathlib`, `html.escape`, `IPython.display` | `sequences`, `seq_names`, `sequence_quality_warning_df` |
-| **Sequence alignment and similarity analysis** | Assess sequence-level similarity using pairwise alignment, reference-based comparison, and multiple sequence alignment. | Biopython `Bio.Align.PairwiseAligner`, Biopython substitution matrices, Biopython `AlignIO`, MAFFT, `pandas` | BLOSUM62 substitution matrix; input protein sequences | `itertools`, `base64`, `zipfile`, `datetime`, HTML/CSS, `IPython.display`, `html.escape` | Pairwise summary tables, reference summary, identity/similarity/gap matrices, MAFFT files, MSA summary, HTML alignment report, ZIP archive |
-| **Physicochemical profiling and descriptor visualization** | Calculate theoretical sequence-derived descriptors and visualize descriptor patterns. | Biopython `ProteinAnalysis`, `pandas`, Plotly Express, `matplotlib` | Input protein sequences; ProtParam-style descriptor definitions | `math`, `json`, `base64`, `zipfile`, `pathlib`, HTML/CSS, `IPython.display` | Descriptor tables, amino-acid composition files, statistical summaries, interactive HTML plots, manuscript-oriented PNG/SVG figures, HTML report, ZIP archive |
-| **Structure prediction and 3D visualization** | Predict 3D protein structures and inspect confidence-coloured structural models. | ColabFold, `colabfold.batch.run`, `download_alphafold_params`, MMseqs2 mode via ColabFold, `py3Dmol` | AlphaFold model parameters; MMseqs2-based MSA generation; optional templates when enabled | `os`, `pathlib`, `glob`, `subprocess`, `zipfile`, Google Colab runtime | Sequence-specific ColabFold folders, predicted PDB files, ranking/score files, pLDDT plots, PAE plots, MSA coverage plots, job ZIP archive, interactive 3D viewer |
-| **Structure validation, functional annotation and structural comparison** | Inspect local backbone geometry, infer sequence-level functional/domain annotations, and compare predicted folds. | `ramachandraw`, Biopython `PDBParser`, Biopython `seq1`, `protein-sequence-annotation`, PSALM, TM-align, `pandas` | Predicted PDB structures; PSALM model/resources; TM-align source downloaded at runtime | `g++`, `wget`, `subprocess`, `tempfile`, `glob`, `os`, `re`, `IPython.display` | Ramachandran PNG plots, torsion counts, temporary FASTA files, `psalm_hits.tsv`, functional annotation tables, compiled `TMalign`, TM-score/RMSD comparison tables |
-| **Integrated output generation and reproducibility** | Organize, export, and archive workflow outputs for reproducibility and reporting. | `pandas`, `json`, `zipfile`, `base64` | Google Drive storage when mounted; local Colab storage otherwise | HTML/CSS, `IPython.display`, Google Drive mount, notebook-level Python objects | CSV, FASTA, TXT, PDB, PNG, SVG, HTML, JSON, TSV, and ZIP files; structured output folders; report files; notebook DataFrames |
+| Workflow module | Main purpose | Core packages / tools | Main outputs |
+|---|---|---|---|
+| **Input and sequence quality control** | Prepare manually entered protein sequences and flag problematic inputs. | `pandas`, `re`, `IPython.display` | Accepted sequences, sequence identifiers, quality-warning tables |
+| **Sequence alignment and similarity analysis** | Perform pairwise, reference-based, and multiple sequence alignment. | Biopython `PairwiseAligner`, BLOSUM62, MAFFT, `pandas` | Pairwise summaries, identity/similarity/gap matrices, MSA files, HTML reports, ZIP archives |
+| **Physicochemical profiling and descriptor visualization** | Calculate theoretical protein descriptors and visualize their variation. | Biopython `ProteinAnalysis`, `pandas`, Plotly, Matplotlib | Descriptor tables, amino-acid composition, statistical summaries, interactive plots, PNG/SVG figures |
+| **Structure prediction and 3D visualization** | Predict protein structures and inspect model-confidence information. | ColabFold, AlphaFold2, MMseqs2, `py3Dmol` | PDB structures, confidence plots, PAE plots, coverage plots, ZIP archives |
+| **Structure validation, functional annotation and structural comparison** | Examine backbone geometry, identify sequence-based annotations, and compare structures. | `ramachandraw`, PSALM, Biopython, TM-align | Ramachandran plots, PSALM annotations, TM-score/RMSD tables |
+| **Integrated output generation and reproducibility** | Organize, export, and archive analysis outputs. | `pandas`, `json`, `zipfile`, Google Drive integration | CSV, FASTA, TXT, PDB, PNG, SVG, HTML, JSON, TSV, ZIP |
 
 ## Key capabilities
 
 ### 1. Input and sequence QC
+
 - Manual input for multiple protein sequences.
 - Standardization and validation of protein sequences before downstream processing.
 - Detection and reporting of invalid residues, empty entries, and sequence-level warnings.
 
 ### 2. Sequence alignment and similarity
+
 - Global pairwise alignment with Biopython `PairwiseAligner`.
 - BLOSUM62-based similarity scoring with affine gap penalties.
 - All-vs-all and optional reference-based summaries.
@@ -68,6 +70,7 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 - Exportable FASTA, text, CSV, HTML, and ZIP outputs.
 
 ### 3. Physicochemical profiling
+
 - Molecular weight and theoretical pI.
 - GRAVY and hydropathy-related descriptors.
 - Net charge at pH 7 and charge density.
@@ -78,6 +81,7 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 - Interactive Plotly visualizations and high-resolution PNG/SVG exports.
 
 ### 4. Structure prediction
+
 - ColabFold/AlphaFold2-based structure prediction.
 - MMseqs2-based MSA generation.
 - Optional template support.
@@ -85,11 +89,13 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 - Interactive `py3Dmol` structure viewing.
 
 ### 5. Structural validation and annotation
+
 - Ramachandran/backbone torsion analysis.
 - PSALM-based functional/domain annotation workflow.
 - TM-align structural comparison with TM-score and RMSD extraction.
 
 ### 6. Reporting and export
+
 - Structured output directories and downloadable ZIP archives.
 - Machine-readable CSV/TSV/JSON outputs.
 - Human-readable HTML reports.
@@ -100,21 +106,106 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 
 ### Recommended environment
 
-FoldColabFlow is designed primarily for **Google Colab**, where the notebook can install or configure the required software during execution. A GPU runtime is strongly recommended for the structure-prediction stage.
+FoldColabFlow is designed primarily for **Google Colab**, where the notebook installs or configures required software during execution.
+
+A GPU runtime is strongly recommended for the structure-prediction stage.
+
+An internet connection is required for downloading dependencies, model parameters, and accessing external computational resources.
 
 ### Run the notebook
 
-1. Open `FoldColabFlow.ipynb` in Google Colab.
-2. Run the cells from top to bottom.
-3. Mount Google Drive if persistent storage is desired.
-4. Enter protein sequences in the **Protein Sequence Input** section.
-5. Review sequence QC results before continuing.
-6. Run alignment and physicochemical modules.
-7. Enable a GPU runtime before structure prediction.
-8. Run the structure prediction, visualization, Ramachandran, functional annotation, and TM-align modules as required.
-9. Download or archive generated outputs.
+1. Open [`FoldColabFlow.ipynb`](FoldColabFlow.ipynb) in Google Colab.
+2. Select a Python runtime and enable GPU acceleration when required.
+3. Run the notebook cells in their intended order.
+4. Mount Google Drive if persistent storage is desired.
+5. Enter protein sequences in the **Protein Sequence Input** section.
+6. Review sequence QC results before continuing.
+7. Run the sequence alignment and physicochemical analysis modules.
+8. Run ColabFold-based structure prediction and visualization as required.
+9. Perform Ramachandran analysis, PSALM annotation, and TM-align comparisons when needed.
+10. Download or archive generated outputs.
 
-> **Important:** Some external tools are installed or downloaded at runtime. For manuscript-grade reproducibility, use a tagged FoldColabFlow release and preserve the software-version/configuration files generated by the workflow.
+> **Important:** The notebook contains its own installation and dependency-management commands. Users following the standard Google Colab workflow generally do not need to perform a separate installation before executing the notebook.
+
+## Installation and Dependencies
+
+FoldColabFlow uses a combination of Python packages, external bioinformatics tools, and computational resources.
+
+To improve transparency and facilitate reproducibility, the repository provides two complementary installation reference files.
+
+### Python dependencies — `requirements.txt`
+
+The [`requirements.txt`](requirements.txt) file documents the principal Python dependencies used by FoldColabFlow.
+
+These include packages for:
+
+- Protein sequence processing and alignment.
+- Physicochemical descriptor calculation.
+- Data organization and reporting.
+- Interactive and static visualization.
+- Protein structure prediction.
+- Ramachandran analysis.
+- Protein sequence annotation.
+
+For users preparing a separate Python environment, the dependencies can be installed using:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+**However, this command is not required for the standard Google Colab workflow**, because the notebook already includes installation procedures.
+
+The requirements file is a dependency reference and does not necessarily represent a complete, version-locked reproduction of the original Google Colab environment.
+
+### Complete installation guide — `INSTALLATION.md`
+
+The [`INSTALLATION.md`](INSTALLATION.md) file provides a detailed inventory of installation commands implemented in the FoldColabFlow notebook.
+
+The guide documents:
+
+1. Python package installation using pip.
+2. MAFFT installation for multiple sequence alignment.
+3. ColabFold installation from its GitHub repository.
+4. Conditional JAX and associated backend dependencies.
+5. Optional Miniforge/Conda-based installation procedures.
+6. HH-suite and Kalign2 for optional template-related processing.
+7. OpenMM and PDBFixer for optional Amber refinement.
+8. AlphaFold model-parameter downloads.
+9. Ramachandran analysis dependencies.
+10. PSALM functional annotation dependencies.
+11. TM-align source download and compilation.
+12. Repeated and conditional installation commands.
+13. Software-version and execution-environment considerations.
+
+The installation guide reflects the commands already implemented in the notebook. It does not require changes to the existing notebook source code.
+
+### Which installation method should users follow?
+
+| Use case | Recommended procedure |
+|---|---|
+| Standard execution in Google Colab | Open the notebook and execute its built-in installation cells |
+| Reviewing the Python dependencies | Consult `requirements.txt` |
+| Inspecting installation commands and optional tools | Consult `INSTALLATION.md` |
+| Preparing a separate Python environment | Use `requirements.txt` together with the external-tool instructions in `INSTALLATION.md` |
+| Reproducing manuscript analyses | Use the manuscript-specific inputs and retain the corresponding execution configurations and software-version information |
+
+### Avoiding duplicate installations
+
+Some packages, including Biopython and pandas, are installed in multiple notebook modules. The ColabFold setup also contains installation and fallback procedures.
+
+These commands are retained in the notebook to preserve its existing implementation.
+
+Users should generally **avoid running both `pip install -r requirements.txt` and all notebook installation cells as separate setup procedures**, because doing so may unnecessarily repeat installations or alter resolved dependency versions.
+
+### Software version considerations
+
+The current notebook specifies versions for certain dependencies, while others are installed without fixed version constraints.
+
+Consequently, software versions may vary across Google Colab sessions.
+
+For reproducible computational reporting, users should preserve the versions of Python and installed dependencies, ColabFold configuration files, runtime information, model settings, and relevant output artifacts.
+
+The installation reference files document software requirements but do not independently establish exact reproduction of every previously generated result.
 
 ## Demonstration data and reproducibility snapshot
 
@@ -163,15 +254,14 @@ The PETase-like esterase analyses reported in the accompanying manuscript are ma
 
 The six amino-acid sequences used in the manuscript case study (`Seq_1`–`Seq_6`) are provided in:
 
-`manuscript_case_study/PETase_like_esterase_candidates.fasta`
+[`manuscript_case_study/PETase_like_esterase_candidates.fasta`](manuscript_case_study/PETase_like_esterase_candidates.fasta)
 
-This separation is intentional: `examples/demo/` contains the general FoldColabFlow demonstration, whereas `manuscript_case_study/` contains the exact biological inputs and derived structural files associated with the manuscript.
+This separation is intentional:
 
-Predicted structures corresponding to the manuscript case study can be added under:
+- `examples/demo/` contains the general FoldColabFlow demonstration.
+- `manuscript_case_study/` contains manuscript-specific protein sequences and derived structural files.
 
-`manuscript_case_study/`
-
-Recommended filenames are:
+The predicted structures corresponding to the manuscript case study are organized using the following filenames:
 
 - `Seq_1.pdb`
 - `Seq_2.pdb`
@@ -180,20 +270,27 @@ Recommended filenames are:
 - `Seq_5.pdb`
 - `Seq_6.pdb`
 
-Additional manuscript-specific files, including predicted structures and other analysis outputs, can be uploaded directly into `manuscript_case_study/`. This keeps all files associated with the article case study in a single, easy-to-access location.
+Additional manuscript-specific outputs and execution records can be deposited in `manuscript_case_study/` to support further inspection and independent reproduction.
 
 ## Repository layout
-
-A recommended repository organization is:
 
 ```text
 FoldColabFlow/
 ├── README.md
+├── INSTALLATION.md
+├── requirements.txt
 ├── LICENSE
 ├── NOTICE
 ├── CITATION.cff
 ├── FoldColabFlow_Workflow.png
 ├── FoldColabFlow.ipynb
+├── .gitignore
+│
+├── notebooks/
+│   └── ... notebook-related files
+│
+├── assets/
+│   └── ... repository assets
 │
 ├── examples/
 │   └── demo/
@@ -209,7 +306,9 @@ FoldColabFlow/
     └── Seq_6.pdb
 ```
 
-The `examples/demo/` directory should remain dedicated to the general software demonstration. Manuscript-specific files should be placed directly under `manuscript_case_study/`, allowing readers to distinguish the software demo from the exact dataset used in the publication without introducing unnecessary nested folders.
+The `examples/demo/` directory should remain dedicated to the general software demonstration.
+
+Manuscript-specific files should remain under `manuscript_case_study/`, allowing readers to distinguish the demonstration dataset from the case-study data.
 
 ## Outputs
 
@@ -221,17 +320,23 @@ Depending on the enabled modules, FoldColabFlow can generate:
 - **Validation and annotation:** PNG, TSV, CSV, TXT
 - **Structural comparison:** tabular TM-score/RMSD results
 - **Integrated reporting:** HTML reports and structured archives
-- **Manuscript case study:** FASTA inputs, predicted PDB structures, and associated reproducibility outputs stored separately under `manuscript_case_study/`
+- **Manuscript case study:** FASTA inputs, predicted PDB structures, and associated computational outputs
 
 ## Scientific scope and limitations
 
-FoldColabFlow integrates established bioinformatics tools; it does not replace experimental validation. Sequence-derived descriptors are theoretical estimates, structure confidence metrics must be interpreted in context, functional annotations are model/resource dependent, and predicted structures should not be treated as experimentally determined coordinates.
+FoldColabFlow integrates established bioinformatics tools; it does not replace experimental validation.
+
+Sequence-derived descriptors are theoretical estimates, structure confidence metrics must be interpreted in context, functional annotations are model/resource dependent, and predicted structures should not be treated as experimentally determined coordinates.
+
+The solubility proxy implemented in the workflow is a heuristic, sequence-derived screening score rather than an experimentally validated measure of soluble protein expression.
+
+Structural similarity, predicted ligand interactions, or sequence-based annotations alone do not demonstrate PET-depolymerizing activity.
 
 This software is intended for research and educational use and has **not** been validated for clinical diagnosis, treatment decisions, or other safety-critical use.
 
 ## Citation
 
-If you use FoldColabFlow in a thesis, preprint, paper, report, or other scholarly output, please cite the **software release** using the metadata in `CITATION.cff`.
+If you use FoldColabFlow in a thesis, preprint, paper, report, or other scholarly output, please cite the **software release** using the metadata in [`CITATION.cff`](CITATION.cff).
 
 The accompanying FoldColabFlow manuscript has not yet been accepted. Once a formal article citation and DOI are available, this section and `CITATION.cff` can be updated to make the article the preferred citation.
 
@@ -251,11 +356,15 @@ FoldColabFlow's original repository code and documentation are released under th
 
 This is a permissive open-source license that allows reuse, modification, and redistribution under its terms. **Academic citation is requested through `CITATION.cff`, but scholarly citation is separate from the software-license conditions.**
 
-Third-party tools, model parameters, databases, downloaded source files, and example data are **not relicensed by FoldColabFlow** and remain subject to their respective upstream licenses and terms. Users are responsible for complying with those terms.
+Third-party tools, model parameters, databases, downloaded source files, and example data are **not relicensed by FoldColabFlow** and remain subject to their respective upstream licenses and terms.
+
+Users are responsible for complying with those terms.
 
 ## Contributing
 
-Contributions that improve robustness, reproducibility, documentation, testing, or scientific reporting are welcome. For substantial changes, open an issue first so the scope and expected behavior can be discussed.
+Contributions that improve robustness, reproducibility, documentation, testing, or scientific reporting are welcome.
+
+For substantial changes, open an issue first so the scope and expected behavior can be discussed.
 
 ## Project status
 

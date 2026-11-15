@@ -1,7 +1,7 @@
 # FoldColabFlow
 
 <p align="center">
-  <strong>An integrated Google Colab workflow for protein sequence quality control, comparative sequence analysis, physicochemical profiling, structure prediction, validation, annotation, and reproducible export.</strong>
+  <strong>An integrated Google Colab workflow for protein sequence quality control, comparative sequence analysis, physicochemical profiling, structure prediction, validation, annotation, and organized output export.</strong>
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 
 ## Overview
 
-**FoldColabFlow** is a notebook-first protein analysis pipeline designed to connect sequence-level quality control with downstream sequence, descriptor, and structure analyses in a single reproducible workflow. It supports manually entered protein sequences, performs sequence validation and comparative analyses, computes theoretical physicochemical descriptors, runs ColabFold-based structure prediction, enables structural inspection and validation, and exports publication- and archive-friendly outputs.
+**FoldColabFlow** is a notebook-first protein analysis pipeline designed to connect sequence-level quality control with downstream sequence, descriptor, and structure analyses within a coordinated, user-interactive Google Colab workflow. It supports manually entered protein sequences, performs sequence validation and comparative analyses, computes theoretical physicochemical descriptors, runs ColabFold-based structure prediction, enables structural inspection and validation, and exports publication- and archive-friendly outputs.
 
 The current demonstration package was run on two human protein sequences supplied for the project:
 
@@ -34,7 +34,7 @@ The current demonstration package was run on two human protein sequences supplie
 
 The repository includes representative alignment, physicochemical, structure-prediction, and Ramachandran outputs from this two-protein demonstration.
 
-The demonstration dataset is intentionally kept separate from the PETase-like esterase case study described in the accompanying manuscript. Manuscript-specific sequence and structure files are stored under `manuscript_case_study/` so that the published analyses can be reproduced without mixing them with the general software demo.
+The demonstration dataset is intentionally kept separate from the PETase-like esterase case study described in the accompanying manuscript. Manuscript-specific sequence and structure files are stored under `manuscript_case_study/` to distinguish the archived case-study materials from the general software demonstration and support inspection of the reported analyses.
 
 
 ## Workflow
@@ -96,6 +96,14 @@ FoldColabFlow is organized into four high-level stages: **Input & QC**, **Sequen
 - Publication-oriented static figures.
 - Notebook DataFrames for direct downstream analysis.
 
+## Official notebook
+
+The maintained notebook is located at **[`notebook/FoldColabFlow.ipynb`](notebook/FoldColabFlow.ipynb)**. The repository maintains one canonical notebook to avoid confusion between versions.
+
+[**Open FoldColabFlow in Google Colab**](https://colab.research.google.com/github/CBB-University-of-Tehran/FoldColabFlow/blob/main/notebook/FoldColabFlow.ipynb)
+
+The notebook requires user input and interaction at selected steps; it is not an entirely unattended pipeline. Structure prediction can require GPU resources and may depend on the availability of external services.
+
 ## Quick start
 
 ### Recommended environment
@@ -104,7 +112,7 @@ FoldColabFlow is designed primarily for **Google Colab**, where the notebook can
 
 ### Run the notebook
 
-1. Open `FoldColabFlow.ipynb` in Google Colab.
+1. Open [`notebook/FoldColabFlow.ipynb`](notebook/FoldColabFlow.ipynb) in Google Colab (or use the link above).
 2. Run the cells from top to bottom.
 3. Mount Google Drive if persistent storage is desired.
 4. Enter protein sequences in the **Protein Sequence Input** section.
@@ -125,7 +133,7 @@ FoldColabFlow is intended to run primarily in Google Colab. The notebook contain
 
 For standard use, open the notebook in Colab and run its installation/setup cells in their intended order. Do not routinely run `pip install -r requirements.txt` *and* the notebook's setup cells, as that can repeat installs or change dependency resolution. The current notebook downloads some software from moving sources, so documenting dependencies alone does not guarantee an identical environment in future sessions. Preserve resolved versions and execution settings with research outputs.
 
-## Demonstration data and reproducibility snapshot
+## Demonstration data and recorded execution settings
 
 The included demonstration outputs were generated from two sequences (`Seq_1`, 110 aa; `Seq_2`, 90 aa).
 
@@ -174,7 +182,7 @@ The case-study input sequences are provided in [`manuscript_case_study/PETase_li
 
 ### Sequence alignment outputs
 
-The archive [`manuscript_case_study/alignment_outputs-cutinase from Thermobifida fusca.zip`](manuscript_case_study/alignment_outputs-cutinase%20from%20Thermobifida%20fusca.zip) contains the saved sequence-alignment outputs for the six candidates, including:
+The archive [`manuscript_case_study/alignment_outputs-cutinase from Thermobifida fusca .zip`](manuscript_case_study/alignment_outputs-cutinase%20from%20Thermobifida%20fusca%20.zip) contains the saved sequence-alignment outputs for the six candidates, including:
 
 - `software_versions.csv` and `alignment_analysis_settings.csv`: recorded software versions and alignment parameters.
 - `all_vs_all_pairwise_summary.csv`, `all_vs_all_pairwise_alignment_details.txt`: all-versus-all pairwise results and detailed alignments.
@@ -206,12 +214,13 @@ FoldColabFlow/
 ├── requirements.txt
 ├── LICENSE
 ├── NOTICE
+├── THIRD_PARTY_LICENSES.md
 ├── CITATION.cff
 ├── FoldColabFlow_Workflow.png
-├── FoldColabFlow.ipynb
 ├── .gitignore
 ├── assets/
-├── notebooks/
+├── notebook/
+│   └── FoldColabFlow.ipynb      # Canonical notebook
 ├── examples/
 │   └── demo/                   # Two-protein software demonstration
 └── manuscript_case_study/
@@ -222,7 +231,7 @@ FoldColabFlow/
     ├── Seq_4.pdb
     ├── Seq_5.pdb
     ├── Seq_6.pdb
-    ├── alignment_outputs-cutinase from Thermobifida fusca.zip
+    ├── alignment_outputs-cutinase from Thermobifida fusca .zip
     └── physicochemical_outputs.zip
 ```
 
@@ -239,6 +248,10 @@ Depending on the enabled modules, FoldColabFlow can generate:
 - **Structural comparison:** tabular TM-score/RMSD results
 - **Integrated reporting:** HTML reports and structured archives
 - **Manuscript case study:** FASTA inputs, predicted PDB structures, and associated reproducibility outputs stored separately under `manuscript_case_study/`
+
+## Scope of complementary analyses
+
+The notebook provides sequence analysis, physicochemical characterization, ColabFold-based structure prediction and assessment, Ramachandran visualization, PSALM annotation, and TM-align structural comparison. **Catalytic-triad geometry screening and BHET molecular docking in the accompanying study were performed using separate scripts/tools and are not implemented as FoldColabFlow modules.** Likewise, results from the bacterial isolate and PET-treatment experiments are independent experimental observations and should not be attributed to any particular computationally prioritized candidate without additional validation.
 
 ## Scientific scope and limitations
 
@@ -262,13 +275,20 @@ For a public release, the recommended citation workflow is:
 
 Please also cite the upstream scientific software and methods used for the analyses, including ColabFold/AlphaFold, MAFFT, Biopython, TM-align, PSALM, and other relevant dependencies, according to their own citation guidance.
 
-## License
+## License, attribution, and third-party components
 
-FoldColabFlow's original repository code and documentation are released under the **Apache License 2.0**. See [`LICENSE`](LICENSE).
+Original FoldColabFlow code and documentation for which the contributors hold the applicable rights are licensed under the **Apache License 2.0**. See [`LICENSE`](LICENSE).
+
+The repository also provides:
+
+- [`NOTICE`](NOTICE) — copyright and attribution information, including the MIT notice for portions derived from or adapted from ColabFold.
+- [`THIRD_PARTY_LICENSES.md`](THIRD_PARTY_LICENSES.md) — an inventory of the principal runtime tools, libraries, models, associated upstream links, and items requiring version-specific verification.
+
+The FoldColabFlow Apache-2.0 license does **not** relicense third-party code or model resources. Where portions have been adapted from third-party code, the applicable original notices and license conditions must be retained.
 
 This is a permissive open-source license that allows reuse, modification, and redistribution under its terms. **Academic citation is requested through `CITATION.cff`, but scholarly citation is separate from the software-license conditions.**
 
-Third-party tools, model parameters, databases, downloaded source files, and example data are **not relicensed by FoldColabFlow** and remain subject to their respective upstream licenses and terms. Users are responsible for complying with those terms.
+Third-party tools, model parameters, databases, downloaded source files, and data remain subject to their applicable upstream licenses, notices, and terms. Users and redistributors should review these before repackaging third-party materials. Scientific citation is distinct from copyright-license compliance.
 
 ## Contributing
 
@@ -280,4 +300,4 @@ FoldColabFlow is under active research development. Interfaces, output schemas, 
 
 ---
 
-**FoldColabFlow** — integrated protein sequence-to-structure analysis in a reproducible Colab workflow.
+**FoldColabFlow** — integrated, user-interactive protein sequence-to-structure analysis in Google Colab.
